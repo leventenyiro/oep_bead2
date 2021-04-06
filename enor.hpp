@@ -45,25 +45,6 @@ Enor::Enor(const std::string &str) {
     if (_file.fail()) throw FILE_ERROR;
 }
 
-/*void Enor::next() {
-    if (!(_end = (ABNORM == _status))) {
-        std::string nev = _element.name;
-        _current = false;
-        //for (; NORM == _sx && _e.nev == nev; read());
-        while (_status == NORM && _element.name == nev) {
-            //_current = _current || ("MEDVE" == _element.fajta);
-            read();
-        }
-        
-    }
-}*/
-
-/*void Enor::read() {
-    //_file >> _element.name >> _element.year >> _element.contest >> _element.position;
-    //_file >> _element.name >> _element.year;
-    _status = _file.fail() ? ABNORM : NORM;
-}*/
-
 bool isNumber(const string& str)
 {
     for (char const &c : str) {
@@ -101,9 +82,5 @@ void Enor::next() {
         }
         
         cout << _element.name << endl;
-        
-        //string name = line.substr(0, line.find('\t'))
-        //cout << line.substr(0, line.find('\r')) << endl;
-        //cout << _element.name << " " << _element.year << endl;
     }
 }
