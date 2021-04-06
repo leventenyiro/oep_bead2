@@ -23,7 +23,7 @@ class Enor {
         };
 
         std::ifstream _file;
-        Contest _element;
+        Contest _current;
         Status _status;
         bool _end;
 
@@ -35,9 +35,8 @@ class Enor {
             next();
         }
         void next();
+        Contest current() { return _current; }
         bool end() const { return _end; }
-
-
 };
 
 Enor::Enor(const std::string &str) {
@@ -48,7 +47,8 @@ Enor::Enor(const std::string &str) {
 bool isNumber(const string& str)
 {
     for (char const &c : str) {
-        if (std::isdigit(c) == 0) return false;
+        if (std::isdigit(c) == 0)
+            return false;
     }
     return true;
 }
@@ -56,7 +56,7 @@ bool isNumber(const string& str)
 void Enor::next() {
     string line;
     getline(_file, line);
-    _element.name = "";
+    _current.name = "";
     if ( !(_end = _file.fail()) ) {
         istringstream is(line);
 
@@ -68,11 +68,11 @@ void Enor::next() {
             if (isNumber(element)) {
                 isStringNumber = true;
             } else {
-                _element.name += element + " ";
+                _current.name += element + " ";
             }
         }
 
-        is >> _element.year;
+        is >> _current.year;
 
         string contest;
         int position;
@@ -81,6 +81,6 @@ void Enor::next() {
             // valami jön ide
         }
         
-        cout << _element.name << endl;
+        cout << _current.name << endl;
     }
 }
