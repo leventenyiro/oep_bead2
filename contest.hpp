@@ -9,27 +9,28 @@
 using namespace std;
 
 struct Contest {
-    std::string name;
+    string name;
     int year;
-    std::string contest;
-    int position;
+    //string contest;
+    //int position;
+    int highJumpPosition;
 };
 
-class Enor {
+class ContestEnor {
     private:
         enum Status {
             ABNORM,
             NORM
         };
 
-        std::ifstream _file;
+        ifstream _file;
         Contest _current;
         Status _status;
         bool _end;
 
     public:
         enum Errors{ FILE_ERROR };
-        Enor(const std::string &str);
+        ContestEnor(const string &str);
 
         void first() {
             next();
@@ -39,7 +40,7 @@ class Enor {
         bool end() const { return _end; }
 };
 
-Enor::Enor(const std::string &str) {
+ContestEnor::ContestEnor(const string &str) {
     _file.open(str.c_str());
     if (_file.fail()) throw FILE_ERROR;
 }
@@ -47,13 +48,13 @@ Enor::Enor(const std::string &str) {
 bool isNumber(const string& str)
 {
     for (char const &c : str) {
-        if (std::isdigit(c) == 0)
+        if (isdigit(c) == 0)
             return false;
     }
     return true;
 }
 
-void Enor::next() {
+void ContestEnor::next() {
     string line;
     getline(_file, line);
     _current.name = "";
@@ -72,15 +73,15 @@ void Enor::next() {
             }
         }
 
-        is >> _current.year;
-
+        _current.year = atoi(element.c_str());
         string contest;
         int position;
-        while (_status == NORM) {
+        while (!is.fail()) {
             is >> contest >> position;
-            // valami jön ide
+            if (contest == "magasugrás")
+                _current.highJumpPosition = position;
         }
         
-        cout << _current.name << endl;
+        //cout << _current.name << endl;
     }
 }
