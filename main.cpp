@@ -31,7 +31,6 @@ bool firstTask(const string &filename, Contest& element) {
     int maxPoint = 0;
     contest.first();
     while (!contest.end()) {
-        //cout << contest.current().highJumpPosition;
         Contest current = contest.current();
         if (contest.current().highJumpPosition != NULL && (contest
         .current().highJumpPosition) > maxPoint) {
@@ -44,6 +43,8 @@ bool firstTask(const string &filename, Contest& element) {
     
     return isExist;
 }
+
+
 
 int main() {
     string filename;

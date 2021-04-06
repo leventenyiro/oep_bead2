@@ -5,7 +5,7 @@ a versenyzők eredményeit, és egy szöveges állományban rögzítették az ad
 - Feltehetjük, hogy a szöveges állomány helyesen van kitöltve. Példa az állomány egy sorára:
 Nagyon Ügyes Péter 2018 futás100 3 melluszás500 1 magasugrás 1
 
-- [ ] A „magasugrásban” (is) indult versenyzők közül ki szerezte a legtöbb pontot? Adjuk
+- [x] A „magasugrásban” (is) indult versenyzők közül ki szerezte a legtöbb pontot? Adjuk
 meg az évszámot és a pontok számát is. Az első hat helyezésért jár pont: 12 az első
 helyért, 10 a másodikért, … 2 pont a hatodik helyezésért.
 
