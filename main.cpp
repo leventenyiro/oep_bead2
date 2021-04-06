@@ -4,9 +4,6 @@
 
 using namespace std;
 
-#define NORMAL_MODE
-#ifdef NORMAL_MODE
-
 int getPoint(int position) {
     switch (position)
     {
@@ -28,7 +25,7 @@ bool firstTask(const string &filename, Contest& element) {
     contest.first();
     while (!contest.end()) {
         Contest current = contest.current();
-        if (contest.current().highJumpPosition != NULL && getPoint(contest.current().highJumpPosition) > maxPoint) {
+        if (getPoint(contest.current().highJumpPosition) > maxPoint) {
             element = contest.current();
             maxPoint = getPoint(element.highJumpPosition);
             isExist = true;
@@ -54,6 +51,9 @@ bool secondTask(const string &filename, Frequency& mostYear) {
 
     return isExist;
 }
+
+//#define NORMAL_MODE
+#ifdef NORMAL_MODE
 
 int main() {
     string filename;
@@ -88,5 +88,27 @@ int main() {
 #else
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+
+TEST_CASE("first task empty file", "t0.txt") {
+    Contest e;
+    CHECK_FALSE(firstTask("t0.txt", e));
+}
+
+TEST_CASE("first task 1 contest, true", "t1.txt") {
+    Contest e;
+    CHECK(firstTask("t1.txt", e));
+    CHECK(e.highJumpPosition == 2);
+}
+
+TEST_CASE("first task 1 contest, false", "t2.txt") {
+    Contest e;
+    CHECK_FALSE(firstTask("t1.txt", e));
+}
+
+TEST_CASE("first task 1 contest, true", "t1.txt") {
+    Contest e;
+    CHECK(firstTask("t1.txt", e));
+    CHECK(e.highJumpPosition == 2);
+}
 
 #endif
