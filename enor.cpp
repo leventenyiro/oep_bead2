@@ -1,4 +1,4 @@
-#include "enor.h"
+/*#include "enor.h"
 
 Enor::Enor(const std::string &str)
 {
@@ -25,3 +25,4 @@ void Enor::read()
     _x >> _e.nev >> _e.datum >> _e.fajta >> _e.suly;
     _sx = _x.fail() ? abnorm : norm;
 }
+*/

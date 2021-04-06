@@ -1,4 +1,5 @@
 #include <iostream>
+#include "enor.hpp"
 
 using namespace std;
 
@@ -6,7 +7,10 @@ using namespace std;
 #ifdef NORMAL_MODE
 
 int main() {
-    
+    Enor t("input.txt");
+    for (t.first(); !t.end(); t.next()) {
+        
+    }
 }
 
 #else
