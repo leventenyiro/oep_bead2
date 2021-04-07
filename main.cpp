@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// first task
 int getPoint(int position) {
     switch (position)
     {
@@ -36,6 +37,7 @@ bool firstTask(const string &filename, Contest& element) {
     return isExist;
 }
 
+// second task
 bool secondTask(const string &filename, Frequency& mostYear) {
     FrequencyEnor frequency(filename);
     bool isExist = false;
@@ -52,7 +54,7 @@ bool secondTask(const string &filename, Frequency& mostYear) {
     return isExist;
 }
 
-//#define NORMAL_MODE
+#define NORMAL_MODE
 #ifdef NORMAL_MODE
 
 int main() {
@@ -94,6 +96,7 @@ TEST_CASE("file doesn't exist", "catch exception") {
     CHECK_THROWS(firstTask("t.txt", e));
 }
 
+// first task
 TEST_CASE("first task empty file", "t0.txt") {
     Contest e;
     CHECK_FALSE(firstTask("t0.txt", e));
@@ -163,7 +166,6 @@ TEST_CASE("two contest, but equal position, first one will win", "t11.txt") {
 }
 
 // second task
-
 TEST_CASE("empty file", "t0.txt") {
     Frequency f;
     CHECK_FALSE(secondTask("t0.txt", f));
