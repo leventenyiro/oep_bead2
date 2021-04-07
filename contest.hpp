@@ -72,6 +72,7 @@ void ContestEnor::next() {
                 _current.name += element + " ";
             }
         }
+        _current.name.pop_back();
 
         _current.year = atoi(element.c_str());
         string contest;

@@ -9,4 +9,4 @@ Nagyon Ügyes Péter 2018 futás100 3 melluszás500 1 magasugrás 1
 meg az évszámot és a pontok számát is. Az első hat helyezésért jár pont: 12 az első
 helyért, 10 a másodikért, … 2 pont a hatodik helyezésért.
 
-- [ ] Adjuk meg azt az évet, amikor a legtöbb versenyző vett részt a bajnokságon.
+- [x] Adjuk meg azt az évet, amikor a legtöbb versenyző vett részt a bajnokságon.

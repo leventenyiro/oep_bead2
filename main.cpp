@@ -67,7 +67,7 @@ int main() {
         if (firstTask(filename, element))
             cout << "Highest point in high jump: " << element.name << " (" << element.year << ") - " << getPoint(element.highJumpPosition) << " point(s)" << endl;
         else
-            cout << "Nobody takes part in the contest of high jump!" << endl;
+            cout << "Nobody earns points in the contest of high jump!" << endl;
     } catch (ContestEnor::Errors err) {
         cerr << "Cannot find the input file: " << filename << endl;
     }
@@ -89,6 +89,11 @@ int main() {
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+TEST_CASE("file doesn't exist", "catch exception") {
+    Contest e;
+    CHECK_THROWS(firstTask("t.txt", e));
+}
+
 TEST_CASE("first task empty file", "t0.txt") {
     Contest e;
     CHECK_FALSE(firstTask("t0.txt", e));
@@ -97,18 +102,95 @@ TEST_CASE("first task empty file", "t0.txt") {
 TEST_CASE("first task 1 contest, true", "t1.txt") {
     Contest e;
     CHECK(firstTask("t1.txt", e));
-    CHECK(e.highJumpPosition == 2);
+    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
 }
 
 TEST_CASE("first task 1 contest, false", "t2.txt") {
     Contest e;
-    CHECK_FALSE(firstTask("t1.txt", e));
+    CHECK_FALSE(firstTask("t2.txt", e));
 }
 
-TEST_CASE("first task 1 contest, true", "t1.txt") {
+TEST_CASE("first task more contest, first one meets the requirements", "t3.txt") {
     Contest e;
-    CHECK(firstTask("t1.txt", e));
-    CHECK(e.highJumpPosition == 2);
+    CHECK(firstTask("t3.txt", e));
+    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
+}
+
+TEST_CASE("first task more contest, second one meets the requirements", "t4.txt") {
+    Contest e;
+    CHECK(firstTask("t4.txt", e));
+    CHECK((e.name == "Minta József" && e.year == 2019) == TRUE);
+}
+
+TEST_CASE("first task more contest, last one meets the requirements", "t5.txt") {
+    Contest e;
+    CHECK(firstTask("t5.txt", e));
+    CHECK((e.name == "Példa Ferenc" && e.year == 2020) == TRUE);
+}
+
+TEST_CASE("first task more contest, no one meets the requirements", "t6.txt") {
+    Contest e;
+    CHECK_FALSE(firstTask("t6.txt", e));
+}
+
+TEST_CASE("first one earns the most points", "t7.txt") {
+    Contest e;
+    CHECK(firstTask("t7.txt", e));
+    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
+}
+
+TEST_CASE("second one earns the most points", "t8.txt") {
+    Contest e;
+    CHECK(firstTask("t8.txt", e));
+    CHECK((e.name == "Minta József" && e.year == 2019) == TRUE);
+}
+
+TEST_CASE("last one earns the most points", "t9.txt") {
+    Contest e;
+    CHECK(firstTask("t9.txt", e));
+    CHECK((e.name == "Példa Ferenc" && e.year == 2020) == TRUE);
+}
+
+TEST_CASE("no one earns the most points, because the bad positions", "t10.txt") {
+    Contest e;
+    CHECK_FALSE(firstTask("t10.txt", e));
+}
+
+TEST_CASE("two contest, but equal position, first one will win", "t11.txt") {
+    Contest e;
+    CHECK(firstTask("t11.txt", e));
+    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
+}
+
+// second task
+
+TEST_CASE("empty file", "t0.txt") {
+    Frequency f;
+    CHECK_FALSE(secondTask("t0.txt", f));
+}
+
+TEST_CASE("one contest", "t1.txt") {
+    Frequency f;
+    CHECK(secondTask("t1.txt", f));
+    CHECK((f.year == 2018));
+}
+
+TEST_CASE("two contest, but other years", "t11.txt") {
+    Frequency f;
+    CHECK(secondTask("t11.txt", f));
+    CHECK((f.year == 2018));
+}
+
+TEST_CASE("three contest, but first and second are same year", "t3.txt") {
+    Frequency f;
+    CHECK(secondTask("t3.txt", f));
+    CHECK((f.year == 2018));
+}
+
+TEST_CASE("three contest, but second and third are same year", "t4.txt") {
+    Frequency f;
+    CHECK(secondTask("t4.txt", f));
+    CHECK((f.year == 2019));
 }
 
 #endif
