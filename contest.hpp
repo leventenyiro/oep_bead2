@@ -4,16 +4,11 @@
 #include <sstream>
 #include <string>
 
-#include <iostream>
-
 using namespace std;
 
 struct Contest {
     string name;
-    int year;
-    //string contest;
-    //int position;
-    int highJumpPosition;
+    int year, highJumpPosition;
 };
 
 class ContestEnor {
@@ -31,10 +26,7 @@ class ContestEnor {
     public:
         enum Errors{ FILE_ERROR };
         ContestEnor(const string &str);
-
-        void first() {
-            next();
-        }
+        void first() { next(); }
         void next();
         Contest current() { return _current; }
         bool end() const { return _end; }
@@ -82,7 +74,5 @@ void ContestEnor::next() {
             if (contest == "magasugrás")
                 _current.highJumpPosition = position;
         }
-        
-        //cout << _current.name << endl;
     }
 }

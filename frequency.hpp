@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <fstream>
 #include "contest.hpp"
 
@@ -19,7 +18,6 @@ class FrequencyEnor {
 
     public:
         FrequencyEnor(const string &filename): _contestEnor(filename) {};
-        
         void first() { _contestEnor.first(); next(); };
         void next();
         Frequency current() { return _current; };
