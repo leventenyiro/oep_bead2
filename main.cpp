@@ -25,7 +25,6 @@ bool firstTask(const string &filename, Contest& element) {
 
     contest.first();
     while (!contest.end()) {
-        Contest current = contest.current();
         if (getPoint(contest.current().highJumpPosition) > maxPoint) {
             element = contest.current();
             maxPoint = getPoint(element.highJumpPosition);
@@ -54,7 +53,7 @@ bool secondTask(const string &filename, Frequency& mostYear) {
     return isExist;
 }
 
-#define NORMAL_MODE
+//#define NORMAL_MODE
 #ifdef NORMAL_MODE
 
 int main() {

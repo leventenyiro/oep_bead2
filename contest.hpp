@@ -13,14 +13,8 @@ struct Contest {
 
 class ContestEnor {
     private:
-        enum Status {
-            ABNORM,
-            NORM
-        };
-
         ifstream _file;
         Contest _current;
-        Status _status;
         bool _end;
 
     public:
@@ -53,20 +47,20 @@ void ContestEnor::next() {
     if ( !(_end = _file.fail()) ) {
         istringstream is(line);
 
-        string element = "";
+        string name = "";
 
         bool isStringNumber = false;
         while (!isStringNumber) {
-            is >> element;
-            if (isNumber(element)) {
+            is >> name;
+            if (isNumber(name)) {
                 isStringNumber = true;
             } else {
-                _current.name += element + " ";
+                _current.name += name + " ";
             }
         }
         _current.name.pop_back();
 
-        _current.year = atoi(element.c_str());
+        _current.year = atoi(name.c_str());
         string contest;
         int position;
         while (!is.fail()) {
