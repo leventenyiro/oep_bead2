@@ -1,6 +1,6 @@
 #include <iostream>
-#include "contest.hpp"
-#include "frequency.hpp"
+#include "ContestEnor.hpp"
+#include "FrequencyEnor.hpp"
 
 using namespace std;
 

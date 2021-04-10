@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-#include "contest.hpp"
+#include "ContestEnor.hpp"
 
 using namespace std;
 
