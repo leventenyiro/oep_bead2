@@ -8,7 +8,8 @@ using namespace std;
 
 struct Contest {
     string name;
-    int year, highJumpPosition;
+    int year, point;
+    bool hasHighJump;
 };
 
 class ContestEnor {
@@ -40,6 +41,19 @@ bool isNumber(const string& str)
     return true;
 }
 
+int getPoint(int position) {
+    switch (position)
+    {
+        case 1: return 12; break;
+        case 2: return 10; break;
+        case 3: return 8; break;
+        case 4: return 6; break;
+        case 5: return 4; break;
+        case 6: return 2; break;
+        default: return 0; break;
+    }
+}
+
 void ContestEnor::next() {
     string line;
     getline(_file, line);
@@ -63,10 +77,19 @@ void ContestEnor::next() {
         _current.year = atoi(name.c_str());
         string contest;
         int position;
+
+        int point = 0;
+        bool isHighJump = false;
+        is >> contest >> position;
         while (!is.fail()) {
-            is >> contest >> position;
+            point += getPoint(position);
+
             if (contest == "magasugrás")
-                _current.highJumpPosition = position;
+                isHighJump = true;
+            is >> contest >> position;
         }
+
+        _current.hasHighJump = isHighJump;
+        _current.point = point;
     }
 }
