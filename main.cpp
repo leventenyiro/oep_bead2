@@ -40,7 +40,7 @@ bool secondTask(const string &filename, Frequency& mostYear) {
     return isExist;
 }
 
-#define NORMAL_MODE
+//#define NORMAL_MODE
 #ifdef NORMAL_MODE
 
 int main() {
@@ -140,15 +140,15 @@ TEST_CASE("last one earns the most points", "t9.txt") {
     CHECK((e.name == "Példa Ferenc" && e.year == 2020) == TRUE);
 }
 
-TEST_CASE("no one earns the most points, because the bad positions", "t10.txt") {
+TEST_CASE("equal points, first one will win", "t10.txt") {
     Contest e;
-    CHECK_FALSE(firstTask("t10.txt", e));
+    CHECK(firstTask("t10.txt", e));
+    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
 }
 
-TEST_CASE("two contest, but equal position, first one will win", "t11.txt") {
+TEST_CASE("nobody takes part in high jump", "t11.txt") {
     Contest e;
-    CHECK(firstTask("t11.txt", e));
-    CHECK((e.name == "Nagyon Ügyes Péter" && e.year == 2018) == TRUE);
+    CHECK_FALSE(firstTask("t11.txt", e));
 }
 
 // second task
